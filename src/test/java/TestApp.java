@@ -1,12 +1,21 @@
+import com.menis.service.ITestService;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.math.BigDecimal;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:springmvc.xml"})
 public class TestApp {
+    @Autowired
+    ITestService testService;
+
     @Test
     public void test(){
-        BigDecimal decimal = new BigDecimal("10");
-        BigDecimal numExed = decimal.setScale(2,BigDecimal.ROUND_HALF_UP);
-        System.out.println(numExed);
+        String name = "ppliu";
+        String ret = testService.serviceMethod(name);
+        System.out.println(ret);
     }
+
 }

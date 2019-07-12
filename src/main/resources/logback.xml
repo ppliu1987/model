@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<appender name="A1"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>../logs/model.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>../logs/model_%d{yyyyMMdd}_%i.log
+			</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>64MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%X{MDC_SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss}] %-5p-[%m]%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">  
+        <encoder>  
+            <pattern>[%X{MDC_SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss}] %-5p-[%m]%n</pattern>
+			<charset>UTF-8</charset>
+        </encoder>  
+    </appender>  
+    
+    <appender name="qrcode" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>../logs/qrcode.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>../logs/qrcode_%d{yyyyMMdd}_%i.log</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%X{MDC_SESSION_KEY} %d{yyyy-MM-dd HH:mm:ss}] %-5p-[%m]%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<logger name="qrcodeLog" additivity="false" level="INFO"> 
+        <appender-ref ref="qrcode" /> 
+    </logger> 
+	
+    
+    
+	<root level="INFO">
+		<appender-ref ref="A1" />
+	</root>
+</configuration>
