@@ -19,6 +19,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <spring.version>4.2.0.RELEASE</spring.version>
     <slf4j.version>1.7.5</slf4j.version>
+    <aop.aspectj.version>1.8.9</aop.aspectj.version>
   </properties>
 
   <dependencies>
@@ -27,6 +28,49 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <!-- jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.9</version>
+    </dependency>
+    <!-- mybatis依赖 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <!-- mybatis ORM框架 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.1</version>
+    </dependency>
+    <!-- mysql驱动包 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.29</version>
+    </dependency>
+    <!--c3p0 连接池 -->
+    <dependency>
+      <groupId>c3p0</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.1.2</version>
+    </dependency>
+    <!--Lombok依赖-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.8</version>
+      <scope>provided</scope>
     </dependency>
     <!--日志配置log4j+logback-->
     <dependency>
@@ -59,7 +103,30 @@
       <artifactId>jul-to-slf4j</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+    <!--AOP AspectJ依赖-->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aop.aspectj.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjtools -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjtools</artifactId>
+      <version>${aop.aspectj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aop.aspectj.version}</version>
+    </dependency>
     <!--spring依赖开始-->
+    <!--Spring java数据库访问包，在本例中主要用于提供数据源 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
@@ -103,7 +170,7 @@
   </dependencies>
 
   <build>
-    <finalName>build.test</finalName>
+    <finalName>menis</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

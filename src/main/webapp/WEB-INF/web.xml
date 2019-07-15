@@ -8,7 +8,6 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-
   <!-- 编码过滤器 -->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -43,7 +42,7 @@
 
   <!--项目首页配置-->
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>loginHandler/toLogin</welcome-file>
   </welcome-file-list>
 
   <!--servlet配置项-->
