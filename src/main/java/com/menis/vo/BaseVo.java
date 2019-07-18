@@ -9,14 +9,14 @@ import java.io.Serializable;
 public class BaseVo implements Serializable {
     private static final Long SerialVersionUID = 1L;
 
-    String id;
-    String buildTime;//yyyyMMddHHmmss
-    String tmstmp;//yyyyMMddHHmmss
-    String isDel;//删除标记
-    String status;//状态
-    String extInfo;//扩展信息
+    protected String id = createId();
+    protected String buildTime = StringUtil.getTmstmp(14);//yyyyMMddHHmmss
+    protected String tmstmp = StringUtil.getTmstmp(14);//yyyyMMddHHmmss
+    protected String isDel = "0";//删除标记 0-未删除,1-已删除
+    protected String status = "0";//状态0-初始状态
+    protected String extInfo;//扩展信息
 
-    public void init(){
+    protected void init(){
         this.id = createId();
         this.buildTime = StringUtil.getTmstmp(14);
         this.tmstmp = StringUtil.getTmstmp(14);
@@ -34,7 +34,15 @@ public class BaseVo implements Serializable {
         String tmstmp = StringUtil.getTmstmp(14);
         String random = StringUtil.getRandom(8);
         StringBuffer buf = new StringBuffer(tmstmp);
-//        String id = buf.append(random).toString();
-        return id;
+        String newId = buf.append(random).toString();
+        return newId;
+    }
+
+    public static void main(String[] args) {
+        BaseVo bs = new BaseVo();
+        bs.init();
+        System.out.println(bs.getId());
+        System.out.println(bs.id);
+        System.out.println(StringUtil.getTmstmp(14));
     }
 }

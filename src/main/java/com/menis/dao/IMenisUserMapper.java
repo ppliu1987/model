@@ -3,7 +3,8 @@ package com.menis.dao;
 import com.menis.vo.UserVo;
 import org.springframework.stereotype.Repository;
 
-@Repository("userMapper")
+@Repository("menisUserMapper")
 public interface IMenisUserMapper {
-    public UserVo getUserByMblNo(String mblNo);
+    UserVo getUserByMblNo(String mblNo);
+    void update(UserVo user);
 }

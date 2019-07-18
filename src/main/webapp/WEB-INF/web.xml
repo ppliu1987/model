@@ -8,6 +8,18 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:/spring/*.xml</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+
   <!-- 编码过滤器 -->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -42,7 +54,7 @@
 
   <!--项目首页配置-->
   <welcome-file-list>
-    <welcome-file>loginHandler/toLogin</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
   <!--servlet配置项-->

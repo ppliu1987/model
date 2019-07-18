@@ -1,8 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--命名空间应该是对应接口的包名+接口名 -->
-<mapper namespace="com.menis.vo.UserVo">
-    <select id="getUserByMblNo" parameterType="java.lang.String" resultType="UserVo">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.menis.dao.IMenisUserMapper">
+
+    <resultMap type="com.menis.vo.UserVo" id="userBean">
+        <result property="id" column="user_id" />
+        <result property="buildTime" column="user_buildtime" />
+        <result property="tmstmp" column="user_tmstmp" />
+        <result property="isDel" column="user_isdel" />
+        <result property="status" column="user_status" />
+        <result property="extInfo" column="user_extInfo" />
+        <result property="mblNo" column="user_mblNo" />
+        <result property="passwd" column="user_name" />
+        <result property="idCard" column="user_idcard" />
+        <result property="bankCardNo" column="user_bankcardno" />
+    </resultMap>
+
+    <select id="getUserByMblNo" parameterType="String" resultMap="userBean">
         select * from menis_user where user_mblNo=#{0}
     </select>
+
+    <update id="update" parameterType="com.menis.vo.UserVo">
+        update menis_user set user_name=#{passwd} where user_mblNo=#{mblNo}
+    </update>
 </mapper>

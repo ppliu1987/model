@@ -4,4 +4,5 @@ import com.menis.vo.UserVo;
 
 public interface IMenisUserService {
     public UserVo getUserByMblNo(String mblNo);
+    public void update(UserVo user);
 }

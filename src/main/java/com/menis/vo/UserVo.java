@@ -12,4 +12,11 @@ public class UserVo extends BaseVo implements Serializable {
     public String passwd;//密码
     public String idCard;//身份证号
     public String bankCardNo;//银行卡号
+
+    public String id = super.id;
+    public String buildTime = super.buildTime;
+    public String tmstmp = super.tmstmp;
+    public String isDel = super.isDel;
+    public String status = super.status;
+
 }
