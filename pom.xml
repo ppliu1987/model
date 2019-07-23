@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <spring.version>4.2.0.RELEASE</spring.version>
+    <spring.version>4.3.3.RELEASE</spring.version>
     <slf4j.version>1.7.5</slf4j.version>
     <aop.aspectj.version>1.8.9</aop.aspectj.version>
   </properties>
@@ -28,6 +28,32 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <!--jackson-->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.8.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.8.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.8.7</version>
     </dependency>
     <!--servlet-->
     <dependency>
@@ -186,6 +212,7 @@
   </dependencies>
 
   <build>
+    <finalName>menis</finalName>
 
     <resources>
       <resource>
@@ -197,39 +224,40 @@
     </resources>
 
 
-    <finalName>menis</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+
+        <configuration>
+          <warName>menis</warName>
+
+          <webResources>
+            <resource>
+              <directory>${project.basedir}/src/main/resources</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.0.0.v20130308</version>
+      </plugin>
+    </plugins>
   </build>
 </project>

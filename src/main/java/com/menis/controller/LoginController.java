@@ -25,8 +25,9 @@ public class LoginController {
         return "test/testview";
     }
     //登录方法
+    @ResponseBody
     @RequestMapping("/userLogin")
-    public String userLogin(@RequestParam("name=userNm")String userNm,@RequestParam("name=passwd")String passwd){
+    public String userLogin(@RequestParam(name="userNm")String userNm,@RequestParam(name="passwd")String passwd){
         if("ppliu".equals(userNm)&&"123456".equals(passwd)){
             return "登录成功";
         }
