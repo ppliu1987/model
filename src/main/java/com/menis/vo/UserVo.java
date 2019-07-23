@@ -13,10 +13,14 @@ public class UserVo extends BaseVo implements Serializable {
     public String idCard;//身份证号
     public String bankCardNo;//银行卡号
 
-    public String id = super.id;
-    public String buildTime = super.buildTime;
-    public String tmstmp = super.tmstmp;
-    public String isDel = super.isDel;
-    public String status = super.status;
+//    public String id = super.id;
+//    public String buildTime = super.buildTime;
+//    public String tmstmp = super.tmstmp;
+//    public String isDel = super.isDel;
+//    public String status = super.status;
+    public static void main(String[] args) {
+        UserVo usr = new UserVo();
+        System.out.println("user.id="+usr.id);
+    }
 
 }

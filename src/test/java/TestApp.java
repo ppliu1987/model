@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:springmvc.xml","classpath:spring/spring_mybatis.xml"})
+@ContextConfiguration(locations={"classpath:WEB-INF/springmvc.xml", "classpath:WEB-INF/spring/spring_mybatis.xml"})
 public class TestApp {
     @Autowired
     TestController controller;
