@@ -1,6 +1,7 @@
 import com.menis.controller.TestController;
 import com.menis.service.IMenisUserService;
 import com.menis.service.ITestService;
+import com.menis.util.RedisUtil;
 import com.menis.vo.UserVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:WEB-INF/springmvc.xml", "classpath:WEB-INF/spring/spring_mybatis.xml"})
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/springmvc.xml",
+        "file:src/main/webapp/WEB-INF/spring/spring_mybatis.xml",
+        "file:src/main/webapp/WEB-INF/spring/spring_redis.xml"})
 public class TestApp {
     @Autowired
     TestController controller;
@@ -17,6 +20,14 @@ public class TestApp {
     ITestService testService;
     @Autowired
     IMenisUserService userService;
+    @Autowired
+    RedisUtil redisUtil;
+
+    @Test
+    public void testRedis(){
+        System.out.println("是否有"+redisUtil.hasKey("name"));
+
+    }
 
     @Test
     public void testUserService(){

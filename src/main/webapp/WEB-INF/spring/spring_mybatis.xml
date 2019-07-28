@@ -20,7 +20,7 @@
     <context:component-scan base-package="com.menis" />
 
     <!--1 引入属性文件，在配置中占位使用 -->
-    <context:property-placeholder location="/WEB-INF/jdbc.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>
 
     <!--2 配置C3P0数据源 -->
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
